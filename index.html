@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anand Clinic | Calicut</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- CSS Variables & Reset --- */
+        :root {
+            /* Colors derived from your images */
+            --primary: #4A7C75; /* Sage Green */
+            --primary-dark: #355E58;
+            --secondary: #2C3E50; /* Navy Blue from Image 2 */
+            --accent: #E8F1F0; /* Light Mist Background */
+            --white: #ffffff;
+            --text-main: #2C3E50;
+            --text-light: #6c7c7a;
+            --shadow: 0 10px 30px rgba(74, 124, 117, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--accent);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Typography --- */
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif; /* Elegant font for headings */
+            color: var(--secondary);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+            opacity: 0;
+        }
+
+        /* --- Header / Navigation --- */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 1.8rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-weight: 400;
+            color: var(--text-main);
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .cta-btn {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #E8F1F0 0%, #D0E4E1 100%);
+            padding: 0 1rem;
+            position: relative;
+        }
+
+        /* Abstract Bokeh effect from image 1 */
+        .bokeh {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            filter: blur(20px);
+            z-index: 0;
+        }
+        .b1 { width: 300px; height: 300px; top: 10%; left: -50px; }
+        .b2 { width: 200px; height: 200px; bottom: 20%; right: 5%; background: rgba(74, 124, 117, 0.1); }
+
+        .hero-content {
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .hero-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- Services / Info Cards --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 5%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(74, 124, 117, 0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--primary);
+        }
+
+        .card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* --- Doctors Section --- */
+        .doctors-section {
+            background-color: var(--white);
+        }
+
+        .doctor-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            border-radius: 15px;
+            background: #F9FCFB;
+        }
+
+        .doctor-avatar {
+            width: 100px;
+            height: 100px;
+            background: #D0E4E1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        /* --- Footer / Location --- */
+        footer {
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 3rem;
+        }
+
+        .footer-col h3 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-info li {
+            list-style: none;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            opacity: 0.9;
+        }
+
+        .map-box {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 400px;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            opacity: 0.6;
+        }
+
+        /* --- Mobile Responsiveness --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            nav ul { display: none; } /* Simplified for single page demo */
+            .logo { font-size: 1.2rem; }
+            .grid-cards { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-hospital-user"></i>
+            Anand Clinic
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#doctors">Doctors</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <a href="#contact" class="cta-btn">Book Visit</a>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="bokeh b1"></div>
+        <div class="bokeh b2"></div>
+        
+        <div class="hero-content fade-in" style="animation-delay: 0.2s;">
+            <div class="hero-tags">
+                <span>Healthy</span> &bull; <span>Safe</span> &bull; <span>Care</span>
+            </div>
+            <h1>Wishing You a<br>Healthy Year Ahead</h1>
+            <p>Compassionate care in the heart of Calicut.</p>
+            <br>
+            <a href="#contact" class="cta-btn" style="font-size: 1.1rem; padding: 0.8rem 2rem;">Visit Us Today</a>
+        </div>
+    </section>
+
+    <!-- Services & Features -->
+    <section id="services" class="container">
+        <div class="grid-cards">
+            <!-- Feature 1: 24/7 -->
+            <div class="card fade-in" style="animation-delay: 0.2s;">
+                <i class="fa-solid fa-clock"></i>
+                <h3>24/7 Service</h3>
+                <p>We understand that health concerns don't follow a schedule. Dr. Anand is available around the clock to ensure you get the care you need.</p>
+            </div>
+
+            <!-- Feature 2: Location -->
+            <div class="card fade-in" style="animation-delay: 0.4s;">
+                <i class="fa-solid fa-location-dot"></i>
+                <h3>Prime Location</h3>
+                <p>Conveniently located opposite the New Bus Stand in Calicut, making it easy for you to reach us from anywhere in the city.</p>
+            </div>
+
+            <!-- Feature 3: Quality -->
+            <div class="card fade-in" style="animation-delay: 0.6s;">
+                <i class="fa-solid fa-heart-pulse"></i>
+                <h3>Expert Care</h3>
+                <p>Experience dedicated medical attention with modern facilities, focused on your long-term well-being and immediate recovery.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctors Section -->
+    <section id="doctors" class="doctors-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Meet Our Doctors</h2>
+                <p style="color: var(--text-light)">Dedicated professionals committed to your health</p>
+            </div>
+
+            <div class="grid-cards">
+                <!-- Dr. Anand -->
+                <div class="doctor-card fade-in">
+                    <div class="doctor-avatar">
+                        <i class="fa-solid fa-user-doctor"></i>
+                    </div>
+                    <h3>Dr. Anand</h3>
+                    <p style="color: var(--primary); font-weight: 600;">General Physician</p>
+                    <p style="margin-top: 10px; text-align: center; color: var(--text-light)">Providing 24/7 dedicated service to the community of Calicut with a focus on comprehensive patient care.</p>
+                </div>
+
+                <!-- Dr. Subadhra -->
+                <div class="doctor-card fade-in">
+                    <div class="doctor-avatar">
+                        <i class="fa-solid fa-user-nurse"></i>
+                    </div>
+                    <h3>Dr. Subadhra</h3>
+                    <p style="color: var(--primary); font-weight: 600;">Specialist</p>
+                    <p style="margin-top: 10px; text-align: center; color: var(--text-light)">Bringing expertise and compassion to Anand Clinic, ensuring every patient feels heard and healed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-col">
+                <div class="logo" style="color: white; margin-bottom: 1rem;">
+                    <i class="fa-solid fa-hospital-user"></i>
+                    Anand Clinic
+                </div>
+                <p style="max-width: 300px; opacity: 0.8;">
+                    A premier healthcare facility in Calicut dedicated to providing excellent medical care around the clock.
+                </p>
+            </div>
+
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <ul class="contact-info">
+                    <li>
+                        <i class="fa-solid fa-location-dot" style="margin-top: 5px;"></i>
+                        <span>Opposite New Bus Stand,<br>Calicut (Kozhikode), Kerala</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-phone"></i>
+                        <span>+91 123 456 7890</span> <!-- Placeholder number -->
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>contact@anandclinic.com</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Opening Hours</h3>
+                <div class="map-box">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                        <span>Monday - Sunday</span>
+                        <span><strong>24 Hours</strong></span>
+                    </div>
+                    <div style="border-top: 1px solid rgba(255,255,255,0.3); padding-top: 10px; font-size: 0.9em;">
+                        <i class="fa-solid fa-star"></i> 24/7 Emergency Services Available
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            &copy; 2026 Anand Clinic. All rights reserved. Designed with care.
+        </div>
+    </footer>
+
+    <!-- JavaScript for Scroll Animation -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = `fadeIn 0.8s ease forwards`;
+                        entry.target.style.opacity = 1;
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(el => observer.observe(el));
+        });
+    </script>
+
+</body>
+</html>
